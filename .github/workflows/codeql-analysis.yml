@@ -21,19 +21,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Updated to the latest version
+        uses: actions/checkout@v3  # Use the latest version of checkout
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2  # Updated to the latest version
-        with:
-          languages: ${{ matrix.language }}
+        uses: github/codeql-action/init@v3  # Updated to v3
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v2  # Updated to the latest version
+        uses: github/codeql-action/autobuild@v3  # Updated to v3
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2  # Updated to the latest version
-
-permissions:
-  security-events: write  # Allow writing security events like SARIF
-
+        uses: github/codeql-action/analyze@v3  # Updated to v3
