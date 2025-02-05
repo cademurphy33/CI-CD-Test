@@ -18,7 +18,6 @@ jobs:
       matrix:
         language:
           - javascript
-          - html  # Add HTML to the matrix
 
     steps:
       - name: Checkout repository
