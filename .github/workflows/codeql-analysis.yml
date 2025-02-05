@@ -33,3 +33,7 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2  # Updated to the latest version
+
+permissions:
+  security-events: write  # Allow writing security events like SARIF
+
