@@ -22,10 +22,10 @@ jobs:
       - name: "🔧 setup node"
         uses: actions/setup-node@v4
         with:
-          node-version: latest
+          node-version: 20
 
       - name: "🔧 install npm@latest"
-        run: npm i -g npm@latest
+        run: npm i -g npm@8
 
       - name: "📦 ensure package-lock.json exists"
         run: npm install --package-lock-only
