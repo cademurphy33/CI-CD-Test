@@ -10,7 +10,7 @@ on:
 jobs:
   test:
     name: Test and lint
-    uses: open-sauced/open-sauced/.github/workflows/development.yml@main
+    uses: cademurphy33/CI-CD-Test/.github/workflows/development.yml@main
 
   build:
     name: Build application
@@ -25,7 +25,7 @@ jobs:
           node-version: 20
 
       - name: "🔧 install npm@latest"
-        run: npm i -g npm@8
+        run: npm i -g npm@latest
 
       - name: "📦 ensure package-lock.json exists"
         run: npm install --package-lock-only
