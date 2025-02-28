@@ -27,8 +27,9 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: ${{ matrix.language }}
-          queries: security-and-quality
+        languages: ${{ matrix.language }}
+        build-mode: ${{ matrix.build-mode }}
+        queries: ${{ matrix.language == 'javascript-typescript' && 'security-extended, security-and-quality, ./.github/codeql/codeql-custom-queries-java' || 'security-extended, security-and-quality' }}
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3
