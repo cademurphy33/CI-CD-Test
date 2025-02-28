@@ -27,6 +27,9 @@ jobs:
       - name: "🔧 install npm@latest"
         run: npm i -g npm@latest
 
+      - name: "📦 generate package-lock.json"
+        run: npm install --package-lock-only
+
       - name: "📦 install dependencies"
         uses: bahmutov/npm-install@v1
 
