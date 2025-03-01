@@ -51,10 +51,10 @@ jobs:
       - name: "📂 setup GitHub Pages"
         uses: actions/configure-pages@v4
 
-      - name: "🚀 upload to GitHub Pages"
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: build
+      #- name: "🚀 upload to GitHub Pages"
+       # uses: actions/upload-pages-artifact@v3
+       # with:
+       #   path: build
 
       - name: "📢 deploy to GitHub Pages"
         id: deployment
