@@ -1,4 +1,4 @@
-name: Release
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -43,7 +43,7 @@ jobs:
           root_path: "src/"
           artifact_name: "diagram"
 
-      - name: "🚀 static app"
+      - name: "🚀 build static site"
         run: npm run build
 
       - name: "📂 production artifacts"
@@ -52,36 +52,40 @@ jobs:
           name: build
           path: build
 
-  release:
-    environment:
-      name: production
-      url: https://github.com/${{ github.repository }}/releases/tag/${{ steps.semantic-release.outputs.release-tag }}
-    name: Semantic release
-    needs:
-      - build
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
       - name: "☁️ checkout repository"
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v4
 
       - name: "📂 download build artifacts"
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: build
           path: build
 
-      - name: "🚀 release"
-        id: semantic-release
-        uses: open-sauced/semantic-release-conventional-config@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: "📂 setup GitHub Pages"
+        uses: actions/configure-pages@v4
+
+      - name: "🚀 upload to GitHub Pages"
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+      - name: "📢 deploy to GitHub Pages"
+        id: deployment
+        uses: actions/deploy-pages@v4
 
   cleanup:
     name: Cleanup actions
     needs:
-      - release
+      - deploy
     runs-on: ubuntu-latest
     steps:
       - name: "♻️ remove build artifacts"
