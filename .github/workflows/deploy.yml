@@ -65,16 +65,3 @@ jobs:
       - name: "📢 deploy to GitHub Pages"
         id: deployment
         uses: actions/deploy-pages@v4
-
-  cleanup:
-    name: Cleanup actions
-    needs:
-      - deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: "♻️ remove build artifacts"
-        uses: geekyeggo/delete-artifact@v1
-        with:
-          name: |
-            build
-            diagram
