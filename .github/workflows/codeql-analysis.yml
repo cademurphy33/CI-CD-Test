@@ -21,9 +21,9 @@ jobs:
     timeout-minutes: 10
     strategy:
       fail-fast: false
-      matrix:
         language:
           - javascript-typescript
+          build-mode: none
 
     steps:
       - name: Checkout repository
@@ -35,8 +35,8 @@ jobs:
           languages: javascript-typescript
           queries: security-extended, security-and-quality
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
+     # - name: Autobuild
+     #   uses: github/codeql-action/autobuild@v3
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
