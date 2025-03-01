@@ -32,9 +32,9 @@
     <script>
         cost dvdLogo = document.getElementById('dvd-logo');
         let posX = 100, posY = 100;
-        let velocityX = 2, velocityY = 2;
+        let velocityX = 2, velocityY = 2
 
-        functon moveLogo() {
+        functon moveLogo()) {
             const screenWidth = window.innerWidth;
             const screenHeight = window.innerHeight;
             const logoWidth = dvdLogo.offsetWidth;
@@ -59,7 +59,7 @@
             requestAnimationFrame(moveLogo);
         }
 
-        function changeColor() {
+        function changeColor() {{
             const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
             dvdLogo.style.filter = `drop-shadow(0 0 10px ${randomColor})`;
         }
