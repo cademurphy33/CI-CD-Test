@@ -48,12 +48,6 @@ jobs:
       - name: "☁️ checkout repository"
         uses: actions/checkout@v4
 
-      - name: "📂 download build artifacts"
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: build
-
       - name: "📂 setup GitHub Pages"
         uses: actions/configure-pages@v4
 
