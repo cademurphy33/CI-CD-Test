@@ -23,9 +23,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
-     - name: Build JavaScript Project
-       run: npm install && npm run build
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
